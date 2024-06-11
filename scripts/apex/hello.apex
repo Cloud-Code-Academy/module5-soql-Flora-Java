@@ -5,6 +5,9 @@
 // You can also execute the entire file by running the command:
 //     SFDX: Execute Anonymous Apex with Editor Contents
 
-string tempvar = 'Enter_your_name_here';
-System.debug('Hello World!');
-System.debug('My name is ' + tempvar);
+
+String leadSource ='Web'; 
+String keyWord = 'Engineer';
+String keywordx = '%' + keyWord + '%';
+List<Lead> selectedLeads = [SELECT Id, LastName, Company, Phone, Email, LeadSource, Title FROM Lead WHERE LeadSource =:leadSource or Title =: keywordx WITH SECURITY_ENFORCED];
+System.debug(' lis leads: ' + selectedLeads + ' size ' + selectedLeads.size());
